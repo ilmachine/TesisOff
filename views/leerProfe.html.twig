@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block title %}Bienvenido@{% endblock title %}
+{% block invar %} {{parent()}}
+{% endblock invar %}
+{% block contenido %}
+
+<h1> Usuarios </h1>
+<hr>
+{% if cantFilas > 0 %}
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Rut</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Carrera</th>
+        <th scope="col">Facultad</th>
+        <th scope="col" colspan="3">Acciones</th>
+      </tr>
+      </thead>
+      <cwd>
+      <tbody>
+      {% for persona in personas %}
+        <tr {% if persona.per_estado == 0 %}class="table-danger"{% elseif persona.per_estado == 1 %}class="table-success"{% endif %}>
+          <td>{{ persona.per_rut }}-{{ persona.per_digito_verificador }}</td>
+          <td>{{ persona.per_nombre }} {{ persona.per_apellido_paterno }} {{ persona.per_apellido_materno }}</td>
+          <td>{{ persona.tusu_descripcion }}</td>
+          <td>{{ persona.car_descripcion }}</td>
+          <td>{{ persona.fac_descripcion }}</td>
+          <td colspan="2">
+            <div class="btn-group">
+              <button class="btn btn-sm btn-success" data-toggle="button" onClick='location.href="modificarProf.php?button2={{ persona.per_rut }}"'>
+                Modificar
+              </button>
+              {% if persona.per_estado == 0 %}
+                <button class="btn btn-sm btn-danger" onClick='location.href="./eliminarUsu.php?button1={{ persona.per_rut }}"'>
+                    Activar
+                </button>
+              {% elseif persona.per_estado == 1 %}
+              <button class="btn btn-sm btn-danger" onClick='location.href="./eliminarUsu.php?button1={{ persona.per_rut }}"'>
+                  Desactivar
+              </button>
+              {% endif %}
+            </div>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+{% else %}
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th colspan="6">SIN MOVIMIENTOS</th>
+    </tr>
+  </thead>
+</table>
+{% endif %}
+
+{% endblock contenido %}
+{% block piePagina %}
+{% endblock piePagina %}

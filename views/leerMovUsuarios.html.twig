@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block title %}Bienvenido@{% endblock title %}
+{% block invar %} {{parent()}}
+{% endblock invar %}
+{% block contenido %}
+
+<h1> Histórico usuarios <hr></h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Rut Modificante</th>
+      <th scope="col">Rut Modificado</th>
+      <th scope="col">Nombre Modificado</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Operación</th>
+      <th scope="col">Fecha modificación</th>
+    </tr>
+  </thead>
+  <cwd>
+    {% if cantFilas > 0 %}
+      <tbody>
+      {% for operacion in operaciones %}
+        <tr>
+          <th>{{ operacion.idRegOperacion }}</th>
+          <td>{{ operacion.per_rut }}-{{ operacion.per_dv }}</td>
+          <td>{{ operacion.per_aux_rut }}-{{ operacion.per_aux_dv }}</td>
+          <td>{{ operacion.per_aux_nom }} {{ operacion.per_aux_apellido_paterno }} {{ operacion.per_aux_apellido_materno }}</td>
+          <td>{{ operacion.tus_desc }}</td>
+          <td>{{ operacion.ope_nombre }}</td>
+          <td>{{ operacion.fechaOperacion }}</td>
+    {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <thead class="thead-light">
+        <tr>
+          <th colspan="6">SIN MOVIMIENTOS</th>
+        </tr>
+      </thead>
+    </table>
+  {% endif %}
+
+{% endblock contenido %}
+{% block piePagina %}
+{% endblock piePagina %}

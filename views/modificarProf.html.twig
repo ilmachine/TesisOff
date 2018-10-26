@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block title %}Bienvenido@{% endblock title %}
+{% block invar %} {{parent()}}
+{% endblock invar %}
+{% block contenido %}
+
+<h1>Modificar Profesor <hr></h1>
+
+<form action="./modificarProf.php" method="POST">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="rut">Rut</label>
+        <input type="text" name="per_rut" class="form-control" pattern="[0-9]{7,8}[0-9]|[0-9]{7,8}[kK]" readonly value="{{ personas['per_rut'] }}" required />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="nombres">Nombres</label>
+        <input type="text" name="per_nombre" class="form-control" value="{{ personas['per_nombre'] }}" required />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="ap_pat">Apellido Paterno</label>
+        <input type="text" name="per_apellido_paterno" class="form-control" value="{{ personas['per_apellido_paterno'] }}" required />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="ap_mat">Apellido Materno</label>
+        <input type="text" name="per_apellido_materno" class="form-control" value="{{ personas['per_apellido_materno'] }}" required />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="password">Contraseña</label>
+        <input type="text" name="per_password" class="form-control" value="{{ personas['per_password'] }}" required />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="carrera">Carrera</label>
+        <select name="selFac">
+          {% for carrera in carreras %}
+            {% if carrera.car_id == personas['per_carr_id'] %}
+              <option value="{{ carrera.car_id }}" selected>{{ carrera.car_descripcion }}</option>
+            {% else %}
+              <option value="{{ carrera.car_id }}">{{ carrera.car_descripcion }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="selUsu">Tipo Usuario</label></br>
+        <select name="selUsu">
+          {% for usuario in usuarios %}
+            {% if usuario.tusu_id == personas['per_tusu_id'] %}
+              <option value="{{ usuario.tusu_id }}" selected>{{ usuario.tusu_descripcion }}</option>
+            {% else %}
+              <option value="{{ usuario.tusu_id }}">{{ usuario.tusu_descripcion }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-danger float-right" onclick="history.go(-1); return false;">Volver</button>
+    <button type="submit" class="btn btn-success float-right">Modificar</button>
+
+</form>
+{% endblock contenido %}
+{% block piePagina %}
+{% endblock piePagina %}

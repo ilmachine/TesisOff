@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}Bienvenido@{% endblock title %}
+{% block invar %} {{parent()}}
+{% endblock invar %}
+{% block contenido %}
+
+<h1> Histórico: Carga de archivos <hr></h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Archivo</th>
+      <th scope="col">Rut</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Fecha modificación</th>
+    </tr>
+  </thead>
+  <cwd>
+    {% if cantFilas > 0 %}
+      <tbody>
+      {% for fila in filas %}
+        <tr>
+          <th>{{ fila.fich_id }}</th>
+          <td>{{ fila.fich_nombre }}</td>
+          <td>{{ fila.per_rut }}-{{ fila.per_digito_verificador }}</td>
+          <td>{{ fila.per_nombre }} {{ fila.per_apellido_paterno }} {{ fila.per_apellido_materno }}</td>
+          <td>{{ fila.tusu_descripcion }}</td>
+          <td>{{ fila.fich_fch_trx }}</td>
+    {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <thead class="thead-light">
+        <tr>
+          <th colspan="6">SIN MOVIMIENTOS</th>
+        </tr>
+      </thead>
+    </table>
+  {% endif %}
+
+{% endblock contenido %}
+{% block piePagina %}
+{% endblock piePagina %}

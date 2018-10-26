@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block title %}Bienvenido@{% endblock title %}
+{% block invar %} {{parent()}}
+{% endblock invar %}
+{% block contenido %}
+
+<h1> Histórico inicio de sesión <hr></h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Rut</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Fecha modificación</th>
+    </tr>
+  </thead>
+  <cwd>
+    {% if cantFilas > 0 %}
+      <tbody>
+      {% for inicio in inicios %}
+        <tr>
+          <th>{{ inicio.his_id }}</th>
+          <td>{{ inicio.per_rut }}-{{ inicio.per_dv }}</td>
+          <td>{{ inicio.per_nom }} {{ inicio.per_ap_pat }} {{ inicio.per_ap_mat }}</td>
+          <td>{{ inicio.tus_desc }}</td>
+          <td>{{ inicio.his_fch_txr }}</td>
+    {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <thead class="thead-light">
+        <tr>
+          <th colspan="6">SIN MOVIMIENTOS</th>
+        </tr>
+      </thead>
+    </table>
+  {% endif %}
+
+{% endblock contenido %}
+{% block piePagina %}
+{% endblock piePagina %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LCC-CS</title>
+
+    <!-- CSS de Bootstrap -->
+    <link href="./views/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-6 col-md-offset-3">
+              <div class="float-right">
+                <a class="btn btn-outline-info btn-sm" href="./login.php">Login</a>
+              </div>
+                <h2 align="center"></br>Code Search</h2>
+                <form action="./controller/pruebaC.php" method="get">
+                    <div id="custom-search-input">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-lg" name="query" placeholder="Qué deseas buscar?" autofocus />
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-lg" type="submit">Buscar</button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Librería jQuery requerida por los plugins de JavaScript -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+
+    <!-- Todos los plugins JavaScript de Bootstrap (también puedes
+         incluir archivos JavaScript individuales de los únicos
+         plugins que utilices) -->
+    <script src="./views/js/bootstrap.min.js"></script>
+  </body>
+</html>
